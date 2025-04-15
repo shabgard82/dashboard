@@ -44,13 +44,13 @@ export default function Login() {
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <div className="w-full max-w-sm bg-white h-[568px] rounded-lg shadow p-6 border border-[#E2E8F0]">
-        <div className="flex justify-center">
+      <div className="w-full max-w-sm bg-white h-[504px] rounded-lg shadow p-6 border border-[#E2E8F0]">
+        <div className="flex justify-center mb-4">
           <img
-            src={"../../public/assets/ariana-logo.png"}
             alt="ariana-logo"
             width="248px"
             height="64px"
+            src={"../../public/assets/ariana-logo.png"}
           />
         </div>
         <h2 className="text-2xl font-bold text-black my-2">Login</h2>
