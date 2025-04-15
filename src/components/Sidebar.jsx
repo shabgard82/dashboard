@@ -1,13 +1,14 @@
-import { LoginCurve } from "iconsax-react";
+import { InfoCircle, LoginCurve } from "iconsax-react";
 import { useEffect, useState } from "react";
 import Modal from "./Modal";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function Sidebar() {
   const [user, setUser] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
-  //   const navigate = useNavigate();
+  const navigate = useNavigate();
 
+  const openModal = () => setIsOpen(true);
   const closeModal = () => setIsOpen(false);
 
   const fixAvatarUrl = (url) => {
@@ -41,9 +42,8 @@ export default function Sidebar() {
   }, []);
 
   const handleLogout = () => {
-    setIsOpen(true);
-    // localStorage.removeItem("token");
-    // navigate("/login");
+    localStorage.removeItem("token");
+    navigate("/login");
   };
 
   return (
@@ -63,7 +63,7 @@ export default function Sidebar() {
       )}
 
       <button
-        onClick={handleLogout}
+        onClick={openModal}
         className="mt-4 w-full py-2 bg-[#DC2626] text-white rounded-md flex items-center justify-center space-x-2"
       >
         <LoginCurve size="20" color="white" />
@@ -72,20 +72,25 @@ export default function Sidebar() {
 
       {isOpen ? (
         <Modal isOpen={isOpen} onClose={closeModal}>
-          <h2 className="modal-title">Confirmation</h2>
-          <p className="modal-text">Are you sure you want to log out?</p>
-          <div className="mt-4">
+          <div className="flex justify-center">
+            <InfoCircle size="32" color="black" className="mt-8" />
+          </div>
+          <h2 className="text-black text-[14px] my-2">Log out</h2>
+          <p className="text-[#4E5553] text-[14px] mb-4">
+            Are you sure you want to sign out of your account?
+          </p>
+          <div className="mt-8 flex justify-center gap-4">
             <button
-              onClick={closeModal}
-              className="py-2 px-6 bg-green-500 text-white rounded-md"
+              onClick={handleLogout}
+              className="flex-1 py-2 px-6 bg-green-500 text-white rounded-md"
             >
-              Yes
+              Log out
             </button>
             <button
               onClick={closeModal}
-              className="py-2 px-6 bg-red-500 text-white rounded-md ml-4"
+              className="flex-1 py-2 px-6 bg-[#0F172A] text-white rounded-md"
             >
-              No
+              Cancel
             </button>
           </div>
         </Modal>
