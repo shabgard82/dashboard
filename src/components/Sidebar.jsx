@@ -42,9 +42,26 @@ export default function Sidebar() {
     fetchUser();
   }, []);
 
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    navigate("/login");
+  const handleLogout = async () => {
+    const token = localStorage.getItem("token");
+
+    try {
+      const res = await fetch("https://mock.arianalabs.io/api/auth/", {
+        method: "DELETE",
+        headers: {
+          Authorization: `Token ${token}`,
+        },
+      });
+
+      if (!res.ok) {
+        throw new Error("Failed to logout");
+      }
+
+      localStorage.removeItem("token");
+      navigate("/login");
+    } catch (error) {
+      console.error(error.message);
+    }
   };
 
   return (
@@ -54,7 +71,7 @@ export default function Sidebar() {
           <img
             src={fixAvatarUrl(user.avatar)}
             alt="User Avatar"
-            className="w-20 h-20 rounded-full object-cover mb-2"
+            className="w-12 h-12 rounded-full object-cover mb-2"
           />
           <h2 className="font-semibold">
             {user.first_name} {user.last_name}
