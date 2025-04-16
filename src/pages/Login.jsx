@@ -32,8 +32,6 @@ export default function Login() {
         throw new Error(result.message || "Login failed");
       }
 
-      console.log("Login successful:", result);
-
       localStorage.setItem("token", result.token);
       navigate("/dashboard");
     } catch (error) {
