@@ -13,7 +13,7 @@ export default function Sidebar() {
 
   const fixAvatarUrl = (url) => {
     if (!url) return "/assets/avatar.png";
-    return url.replace("https://127.0.0.1:5050", "http://localhost:5050");
+    return url.replace("https://127.0.0.1:5050", "https://mock.arianalabs.io");
   };
 
   useEffect(() => {
@@ -32,6 +32,7 @@ export default function Sidebar() {
         if (!res.ok) throw new Error("Failed to fetch user");
 
         const data = await res.json();
+
         setUser(data);
       } catch (error) {
         console.error("Error fetching user:", error);
@@ -82,7 +83,7 @@ export default function Sidebar() {
           <div className="mt-8 flex justify-center gap-4">
             <button
               onClick={handleLogout}
-              className="flex-1 py-2 px-6 bg-green-500 text-white rounded-md"
+              className="flex-1 py-2 px-6 bg-white border-2 border-[#E2E8F0] text-black rounded-md"
             >
               Log out
             </button>

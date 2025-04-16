@@ -44,7 +44,7 @@ export default function Login() {
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <div className="w-full max-w-sm bg-white h-[504px] rounded-lg shadow p-6 border border-[#E2E8F0]">
+      <div className="w-full max-w-sm bg-white max-h-[548px] rounded-lg shadow p-6 border border-[#E2E8F0]">
         <div className="flex justify-center mb-4">
           <img
             alt="ariana-logo"
@@ -99,10 +99,10 @@ export default function Login() {
                 {errors.password.message}
               </p>
             )}
+            {apiError && (
+              <p className="text-sm text-red-600 text-center">{apiError}</p>
+            )}
           </div>
-          {apiError && (
-            <p className="text-sm text-red-600 text-center">{apiError}</p>
-          )}
 
           <button
             type="submit"
