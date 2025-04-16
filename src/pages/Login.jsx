@@ -9,12 +9,11 @@ export default function Login() {
     formState: { errors },
   } = useForm();
 
-  const [apiError, setApiError] = useState("");
   const navigate = useNavigate();
+  const [apiError, setApiError] = useState("");
 
   const onSubmit = async (data) => {
     setApiError("");
-
     try {
       const response = await fetch("https://mock.arianalabs.io/api/auth/", {
         method: "POST",
@@ -43,7 +42,7 @@ export default function Login() {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
+    <div className="flex items-center justify-center min-h-screen bg-white">
       <div className="w-full max-w-sm bg-white max-h-[548px] rounded-lg shadow p-6 border border-[#E2E8F0]">
         <div className="flex justify-center mb-4">
           <img

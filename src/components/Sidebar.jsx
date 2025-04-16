@@ -78,7 +78,7 @@ export default function Sidebar() {
           <h2 className="font-semibold">
             {user.first_name} {user.last_name}
           </h2>
-          <p className="text-gray-500">@{user.username}</p>
+          <p className="text-gray-500">{user.username}</p>
         </div>
       )}
 
