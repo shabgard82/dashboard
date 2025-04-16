@@ -11,6 +11,8 @@ export default function Sidebar() {
   const openModal = () => setIsOpen(true);
   const closeModal = () => setIsOpen(false);
 
+  //دامنه بک اند برای گرفتن عکس اشتباه روی لوکال ست شده که دسترسی بهش وجود ندارد 
+
   const fixAvatarUrl = (url) => {
     if (!url) return "/assets/avatar.png";
     return url.replace("https://127.0.0.1:5050", "https://mock.arianalabs.io");
